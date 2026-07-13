@@ -46,7 +46,10 @@ const verify = async (req: Request, res: Response, next: NextFunction) => {
     await jwtVerify(token, JWKS);
     next();
   } catch (error) {
-    console.error("JWT Verification failed Error Details:", (error as Error).message);
+    console.error(
+      "JWT Verification failed Error Details:",
+      (error as Error).message,
+    );
     return res.status(403).json({ message: "Forbidden" });
   }
 };
@@ -149,27 +152,22 @@ async function run() {
       const id = req.params.id as string;
       const updatedData = req.body;
 
-      const result = await db_col.updateOne(
-        { _id: new ObjectId(id) } as any,
-        { $set: updatedData },
-      );
+      const result = await db_col.updateOne({ _id: new ObjectId(id) } as any, {
+        $set: updatedData,
+      });
 
       res.send(result);
     });
 
-    app.delete(
-      "/facility/:id",
-      verify,
-      async (req: Request, res: Response) => {
-        const id = req.params.id as string;
+    app.delete("/facility/:id", verify, async (req: Request, res: Response) => {
+      const id = req.params.id as string;
 
-        const result = await db_col.deleteOne({
-          _id: new ObjectId(id),
-        } as any);
+      const result = await db_col.deleteOne({
+        _id: new ObjectId(id),
+      } as any);
 
-        res.send(result);
-      },
-    );
+      res.send(result);
+    });
 
     // for my Bookings
 
