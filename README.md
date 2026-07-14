@@ -4,7 +4,7 @@ SportNest Server handles authentication, facility management, booking operations
 
 ## 🚀 Live API
 
-🔗 https://sport-nest-data-server.vercel.app
+🔗 https://sports-server-ochre.vercel.app
 
 ## 🎯 Purpose
 
@@ -23,6 +23,7 @@ The server manages all backend operations including authentication, database man
 
 ## 🛠️ Technologies Used
 
+- Typescript
 - Node.js
 - Express.js
 - MongoDB
